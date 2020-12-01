@@ -1,2 +1,2 @@
 # Samples15
-Samples for ActiveReports 15
+Samples for ActiveReports
