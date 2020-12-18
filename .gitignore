@@ -1,0 +1,9 @@
+ARConverterBackup*/
+bin/
+obj/
+packages/
+.vs/
+*.user
+.suo
+*.lock
+*.ide

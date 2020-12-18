@@ -1,0 +1,1398 @@
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition">
+	<dd:Name xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">ResourceConsumptionByYear.rdlx</dd:Name>
+	<Body>
+		<Height>8.5in</Height>
+		<ReportItems>
+			<FixedPage Name="FixedPage1">
+				<Pages>
+					<Page>
+						<ReportItems>
+							<dd:DVChart Name="Chart2" xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">
+								<DataSetName>ResourceConsumption</DataSetName>
+								<Height>6.5in</Height>
+								<DisplayTypeSelector>false</DisplayTypeSelector>
+								<Style>
+									<FontSize>8pt</FontSize>
+								</Style>
+								<Header>
+									<Style>
+										<FontSize>8pt</FontSize>
+										<PaddingBottom>2pt</PaddingBottom>
+										<PaddingLeft>2pt</PaddingLeft>
+										<PaddingRight>2pt</PaddingRight>
+										<PaddingTop>4pt</PaddingTop>
+									</Style>
+									<Text>
+										<Style>
+											<Color>SteelBlue</Color>
+											<FontSize>18pt</FontSize>
+											<FontWeight>700</FontWeight>
+											<TextDecoration>Underline</TextDecoration>
+										</Style>
+									</Text>
+									<Title>Natural Resource Consumption</Title>
+								</Header>
+								<Footer>
+									<Style>
+										<FontSize>8pt</FontSize>
+										<PaddingBottom>4pt</PaddingBottom>
+										<PaddingLeft>2pt</PaddingLeft>
+										<PaddingRight>2pt</PaddingRight>
+										<PaddingTop>2pt</PaddingTop>
+									</Style>
+									<Text>
+										<Style>
+											<FontSize>8pt</FontSize>
+										</Style>
+									</Text>
+								</Footer>
+								<Bar>
+									<TopWidth>0.55</TopWidth>
+									<BottomWidth>0.55</BottomWidth>
+									<Width>0.55</Width>
+								</Bar>
+								<PlotArea>
+									<Style>
+										<FontSize>8pt</FontSize>
+										<PaddingBottom>2pt</PaddingBottom>
+										<PaddingLeft>2pt</PaddingLeft>
+										<PaddingRight>2pt</PaddingRight>
+										<PaddingTop>2pt</PaddingTop>
+									</Style>
+									<Axes>
+										<Axis>
+											<AxisLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderStyle>
+														<Default>Solid</Default>
+													</BorderStyle>
+												</Style>
+											</AxisLine>
+											<Labels>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<PaddingTop>5pt</PaddingTop>
+												</Style>
+											</Labels>
+											<MajorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MajorGrid>
+											<MinorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MinorGrid>
+											<MajorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>4pt</Size>
+											</MajorTicks>
+											<MinorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>2pt</Size>
+											</MinorTicks>
+											<Plots>
+												<Plot>Plot1</Plot>
+											</Plots>
+											<Style>
+												<FontSize>8pt</FontSize>
+											</Style>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Title>
+												<Style>
+													<FontSize>14pt</FontSize>
+													<FontWeight>700</FontWeight>
+													<PaddingBottom>5pt</PaddingBottom>
+													<PaddingLeft>2pt</PaddingLeft>
+													<PaddingRight>2pt</PaddingRight>
+													<PaddingTop>2pt</PaddingTop>
+												</Style>
+												<Caption>Year</Caption>
+											</Title>
+											<Type>X</Type>
+										</Axis>
+										<Axis>
+											<AxisLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderStyle>
+														<Default>Solid</Default>
+													</BorderStyle>
+												</Style>
+											</AxisLine>
+											<Labels>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<PaddingRight>5pt</PaddingRight>
+												</Style>
+											</Labels>
+											<MajorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderColor>
+														<Default>LightGray</Default>
+													</BorderColor>
+													<BorderStyle>
+														<Default>Solid</Default>
+													</BorderStyle>
+												</Style>
+												<Visible>true</Visible>
+											</MajorGrid>
+											<MinorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MinorGrid>
+											<MajorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderColor>
+														<Default>LightGray</Default>
+													</BorderColor>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>4pt</Size>
+											</MajorTicks>
+											<MinorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>2pt</Size>
+											</MinorTicks>
+											<Plots>
+												<Plot>Plot1</Plot>
+											</Plots>
+											<Style>
+												<FontSize>8pt</FontSize>
+											</Style>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Title>
+												<Style>
+													<FontSize>14pt</FontSize>
+													<FontWeight>700</FontWeight>
+													<PaddingBottom>2pt</PaddingBottom>
+													<PaddingLeft>2pt</PaddingLeft>
+													<PaddingRight>2pt</PaddingRight>
+													<PaddingTop>2pt</PaddingTop>
+												</Style>
+												<Caption>Natural Resource Consumption</Caption>
+											</Title>
+											<Type>Y</Type>
+										</Axis>
+										<Axis>
+											<AxisLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<Visible>false</Visible>
+											</AxisLine>
+											<Labels>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<Visible>false</Visible>
+											</Labels>
+											<MajorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MajorGrid>
+											<MinorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MinorGrid>
+											<MajorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<Size>4pt</Size>
+											</MajorTicks>
+											<MinorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<Size>2pt</Size>
+											</MinorTicks>
+											<Plots>
+												<Plot>Plot2</Plot>
+											</Plots>
+											<Style>
+												<FontSize>8pt</FontSize>
+											</Style>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Title>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<PaddingBottom>2pt</PaddingBottom>
+													<PaddingLeft>2pt</PaddingLeft>
+													<PaddingRight>2pt</PaddingRight>
+													<PaddingTop>2pt</PaddingTop>
+												</Style>
+											</Title>
+											<Type>X</Type>
+										</Axis>
+										<Axis>
+											<AxisLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderColor>
+														<Default>LightGray</Default>
+													</BorderColor>
+													<BorderStyle>
+														<Default>Solid</Default>
+													</BorderStyle>
+												</Style>
+											</AxisLine>
+											<Labels>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<PaddingLeft>5pt</PaddingLeft>
+												</Style>
+											</Labels>
+											<MajorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderStyle>
+														<Default>Solid</Default>
+													</BorderStyle>
+												</Style>
+											</MajorGrid>
+											<MinorGrid>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</MinorGrid>
+											<MajorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>4pt</Size>
+											</MajorTicks>
+											<MinorTicks>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+												<TickMark>None</TickMark>
+												<Size>2pt</Size>
+											</MinorTicks>
+											<Plots>
+												<Plot>Plot2</Plot>
+											</Plots>
+											<Position>Far</Position>
+											<Style>
+												<FontSize>8pt</FontSize>
+											</Style>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Title>
+												<Style>
+													<FontSize>14pt</FontSize>
+													<FontWeight>700</FontWeight>
+													<PaddingBottom>2pt</PaddingBottom>
+													<PaddingLeft>2pt</PaddingLeft>
+													<PaddingRight>2pt</PaddingRight>
+													<PaddingTop>2pt</PaddingTop>
+												</Style>
+												<Caption>Population</Caption>
+											</Title>
+											<Type>Y</Type>
+										</Axis>
+									</Axes>
+									<Legends>
+										<Legend>
+											<Style>
+												<FontSize>8pt</FontSize>
+												<PaddingBottom>2pt</PaddingBottom>
+												<PaddingLeft>2pt</PaddingLeft>
+												<PaddingRight>2pt</PaddingRight>
+												<PaddingTop>2pt</PaddingTop>
+											</Style>
+											<Title>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Title>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Orientation>Horizontal</Orientation>
+											<Position>Bottom</Position>
+											<Type>Color</Type>
+										</Legend>
+										<Legend>
+											<Style>
+												<FontSize>8pt</FontSize>
+												<PaddingBottom>2pt</PaddingBottom>
+												<PaddingLeft>2pt</PaddingLeft>
+												<PaddingRight>2pt</PaddingRight>
+												<PaddingTop>2pt</PaddingTop>
+											</Style>
+											<Title>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Title>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Type>Shape</Type>
+										</Legend>
+										<Legend>
+											<Style>
+												<FontSize>8pt</FontSize>
+												<PaddingBottom>2pt</PaddingBottom>
+												<PaddingLeft>2pt</PaddingLeft>
+												<PaddingRight>2pt</PaddingRight>
+												<PaddingTop>2pt</PaddingTop>
+											</Style>
+											<Title>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Title>
+											<Text>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Type>Size</Type>
+										</Legend>
+									</Legends>
+								</PlotArea>
+								<Legend>
+									<Style>
+										<FontSize>8pt</FontSize>
+										<PaddingBottom>2pt</PaddingBottom>
+										<PaddingLeft>2pt</PaddingLeft>
+										<PaddingRight>2pt</PaddingRight>
+										<PaddingTop>2pt</PaddingTop>
+									</Style>
+									<Text>
+										<Style>
+											<FontSize>9pt</FontSize>
+										</Style>
+									</Text>
+									<Title>
+										<Style>
+											<FontSize>8pt</FontSize>
+										</Style>
+									</Title>
+									<Orientation>Horizontal</Orientation>
+									<Position>Bottom</Position>
+								</Legend>
+								<Palette>Organic</Palette>
+								<Plots>
+									<Plot>
+										<Type>Bar</Type>
+										<Name>Plot1</Name>
+										<PlotChartType>Column</PlotChartType>
+										<Config>
+											<Style>
+												<FontSize>8pt</FontSize>
+											</Style>
+											<Symbols>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderStyle>
+														<Default>None</Default>
+													</BorderStyle>
+													<BorderWidth>
+														<Default>1pt</Default>
+													</BorderWidth>
+												</Style>
+											</Symbols>
+											<Text>
+												<ConnectingLine>
+													<Style>
+														<FontSize>8pt</FontSize>
+													</Style>
+												</ConnectingLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Tooltip />
+										</Config>
+										<Encodings>
+											<Values>
+												<Value>
+													<Field fieldType="Simple">
+														<Value>
+															<FieldItem>=Fields!KGOilPerCapita.Value</FieldItem>
+														</Value>
+													</Field>
+												</Value>
+												<Value>
+													<Field fieldType="Simple">
+														<Value>
+															<FieldItem>=Fields!ElectrickwhPerCapita.Value</FieldItem>
+														</Value>
+													</Field>
+												</Value>
+											</Values>
+											<Category>
+												<Field>
+													<Value>
+														<FieldItem>=Fields!Year.Value</FieldItem>
+													</Value>
+												</Field>
+												<SortingField>=""</SortingField>
+											</Category>
+											<Color>
+												<Field>
+													<Value>
+														<FieldItem>VALUESNAME</FieldItem>
+													</Value>
+												</Field>
+												<Aggregate>List</Aggregate>
+											</Color>
+											<Shape>
+												<Field>
+													<Value />
+												</Field>
+												<Aggregate>None</Aggregate>
+											</Shape>
+											<Size>
+												<Field>
+													<Value />
+												</Field>
+												<Aggregate>None</Aggregate>
+											</Size>
+										</Encodings>
+									</Plot>
+									<Plot>
+										<Type>Line</Type>
+										<Name>Plot2</Name>
+										<PlotChartType>Line</PlotChartType>
+										<Config>
+											<Style>
+												<FontSize>8pt</FontSize>
+												<BorderColor>
+													<Default>IndianRed</Default>
+												</BorderColor>
+												<BorderStyle>
+													<Default>Solid</Default>
+												</BorderStyle>
+												<BorderWidth>
+													<Default>3pt</Default>
+												</BorderWidth>
+											</Style>
+											<Symbols>
+												<Style>
+													<FontSize>8pt</FontSize>
+													<BorderStyle>
+														<Default>None</Default>
+													</BorderStyle>
+													<BorderWidth>
+														<Default>1pt</Default>
+													</BorderWidth>
+												</Style>
+											</Symbols>
+											<Text>
+												<ConnectingLine>
+													<Style>
+														<FontSize>8pt</FontSize>
+													</Style>
+												</ConnectingLine>
+												<Style>
+													<FontSize>8pt</FontSize>
+												</Style>
+											</Text>
+											<Tooltip />
+										</Config>
+										<Encodings>
+											<Values>
+												<Value>
+													<Field fieldType="Simple">
+														<Value>
+															<FieldItem>=Fields!Population.Value</FieldItem>
+														</Value>
+													</Field>
+												</Value>
+											</Values>
+											<Category>
+												<Field>
+													<Value>
+														<FieldItem>=Fields!Year.Value</FieldItem>
+													</Value>
+												</Field>
+												<SortingField>=""</SortingField>
+											</Category>
+											<Color>
+												<Field>
+													<Value>
+														<FieldItem>VALUESNAME</FieldItem>
+													</Value>
+												</Field>
+												<Aggregate>List</Aggregate>
+											</Color>
+											<Shape>
+												<Field>
+													<Value />
+												</Field>
+												<Aggregate>None</Aggregate>
+											</Shape>
+											<Size>
+												<Field>
+													<Value />
+												</Field>
+												<Aggregate>None</Aggregate>
+											</Size>
+										</Encodings>
+									</Plot>
+								</Plots>
+								<Width>9in</Width>
+								<ZIndex>2</ZIndex>
+							</dd:DVChart>
+						</ReportItems>
+					</Page>
+					<Page>
+						<ReportItems>
+							<Table Name="Table1">
+								<DataSetName>ResourceConsumption</DataSetName>
+								<Header>
+									<TableRows>
+										<TableRow>
+											<Height>0.25in</Height>
+											<TableCells>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox1">
+															<Value>Country</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Center</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox3">
+															<Value>Year</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Center</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox13">
+															<Value>Population</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Center</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox16">
+															<Value>KGOil Per Capita</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Center</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox19">
+															<Value>Electrickwh Per Capita</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Center</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+											</TableCells>
+										</TableRow>
+									</TableRows>
+								</Header>
+								<Details>
+									<TableRows>
+										<TableRow>
+											<Height>0.25in</Height>
+											<TableCells>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox4">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox6">
+															<DataElementName>Year</DataElementName>
+															<Value>=Fields!Year.Value</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+																<TextAlign>Right</TextAlign>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox14">
+															<Value>=Fields!Population.Value</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox17">
+															<Value>=Fields!KGOilPerCapita.Value</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox20">
+															<Value>=Fields!ElectrickwhPerCapita.Value</Value>
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+											</TableCells>
+										</TableRow>
+									</TableRows>
+								</Details>
+								<Footer>
+									<TableRows>
+										<TableRow>
+											<Height>0.25in</Height>
+											<TableCells>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox7">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox9">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox15">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox18">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+												<TableCell>
+													<ReportItems>
+														<Textbox Name="TextBox21">
+															<Value />
+															<Style>
+																<PaddingBottom>2pt</PaddingBottom>
+																<PaddingLeft>2pt</PaddingLeft>
+																<PaddingRight>2pt</PaddingRight>
+																<PaddingTop>2pt</PaddingTop>
+															</Style>
+														</Textbox>
+													</ReportItems>
+												</TableCell>
+											</TableCells>
+										</TableRow>
+									</TableRows>
+								</Footer>
+								<Height>1.340551in</Height>
+								<Left>0.15748in</Left>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">5.693897in</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">8.27756in</dd:FixedWidth>
+								<TableColumns>
+									<TableColumn>
+										<Width>1.181102in</Width>
+									</TableColumn>
+									<TableColumn>
+										<Width>0.7874016in</Width>
+									</TableColumn>
+									<TableColumn>
+										<Width>1.181102in</Width>
+									</TableColumn>
+									<TableColumn>
+										<Width>1.181102in</Width>
+									</TableColumn>
+									<TableColumn>
+										<Width>1.496063in</Width>
+									</TableColumn>
+								</TableColumns>
+								<TableGroups>
+									<TableGroup>
+										<Header>
+											<TableRows>
+												<TableRow>
+													<Height>0.75cm</Height>
+													<TableCells>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox22">
+																	<DataElementName>Country</DataElementName>
+																	<Value>=Fields!Country.Value</Value>
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																		<TextAlign>Center</TextAlign>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox24">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox26">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox27">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox28">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+													</TableCells>
+												</TableRow>
+											</TableRows>
+										</Header>
+										<Footer>
+											<TableRows>
+												<TableRow>
+													<Height>0.75cm</Height>
+													<TableCells>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox29">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox31">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox33">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox34">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+														<TableCell>
+															<ReportItems>
+																<Textbox Name="TextBox35">
+																	<Value />
+																	<Style>
+																		<PaddingBottom>2pt</PaddingBottom>
+																		<PaddingLeft>2pt</PaddingLeft>
+																		<PaddingRight>2pt</PaddingRight>
+																		<PaddingTop>2pt</PaddingTop>
+																	</Style>
+																</Textbox>
+															</ReportItems>
+														</TableCell>
+													</TableCells>
+												</TableRow>
+											</TableRows>
+										</Footer>
+										<Grouping Name="Table1_Group1">
+											<Filters>
+												<Filter>
+													<FilterExpression>=Fields!Country.Value</FilterExpression>
+													<FilterValues>
+														<FilterValue>=Parameters!CountryParam.Value</FilterValue>
+													</FilterValues>
+													<Operator>Equal</Operator>
+												</Filter>
+											</Filters>
+											<GroupExpressions>
+												<GroupExpression>=Fields!Country.Value</GroupExpression>
+											</GroupExpressions>
+										</Grouping>
+									</TableGroup>
+								</TableGroups>
+								<Top>0.393701in</Top>
+								<Width>5.826771in</Width>
+								<ZIndex>1</ZIndex>
+							</Table>
+						</ReportItems>
+					</Page>
+				</Pages>
+				<DataSetName>ResourceConsumption</DataSetName>
+			</FixedPage>
+		</ReportItems>
+	</Body>
+	<BottomMargin>1in</BottomMargin>
+	<LeftMargin>1in</LeftMargin>
+	<PageHeight>8.5in</PageHeight>
+	<PageWidth>11in</PageWidth>
+	<RightMargin>1in</RightMargin>
+	<TopMargin>1in</TopMargin>
+	<Width>11in</Width>
+	<ReportParameters>
+		<ReportParameter Name="CountryParam">
+			<DataType>String</DataType>
+			<Prompt>Country</Prompt>
+			<ValidValues>
+				<ParameterValues>
+					<ParameterValue>
+						<Label>Bangladesh</Label>
+						<Value>Bangladesh</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Brazil</Label>
+						<Value>Brazil</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>China</Label>
+						<Value>China</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>India</Label>
+						<Value>India</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Indonesia</Label>
+						<Value>Indonesia</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Japan</Label>
+						<Value>Japan</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Nigeria</Label>
+						<Value>Nigeria</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Pakistan</Label>
+						<Value>Pakistan</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>Russia</Label>
+						<Value>Russia</Value>
+					</ParameterValue>
+					<ParameterValue>
+						<Label>United States</Label>
+						<Value>United States</Value>
+					</ParameterValue>
+				</ParameterValues>
+			</ValidValues>
+		</ReportParameter>
+	</ReportParameters>
+	<DataSources>
+		<DataSource Name="ResourceConsumption">
+			<ConnectionProperties>
+				<ConnectString>jsondata=[
+  {
+    "Country": "Bangladesh",
+    "Year": 2010,
+    "Population": 151616777,
+    "KGOilPerCapita": 200.65,
+    "ElectrickwhPerCapita": 240.67
+  },
+  {
+    "Country": "Bangladesh",
+    "Year": 2011,
+    "Population": 153405612,
+    "KGOilPerCapita": 205.96,
+    "ElectrickwhPerCapita": 258.48
+  },
+  {
+    "Country": "Bangladesh",
+    "Year": 2012,
+    "Population": 155257387,
+    "KGOilPerCapita": 213.43,
+    "ElectrickwhPerCapita": 275.7
+  },
+  {
+    "Country": "Bangladesh",
+    "Year": 2013,
+    "Population": 157157394,
+    "KGOilPerCapita": 215.52,
+    "ElectrickwhPerCapita": 293.02
+  },
+  {
+    "Country": "Brazil",
+    "Year": 2010,
+    "Population": 198614208,
+    "KGOilPerCapita": 1338.59,
+    "ElectrickwhPerCapita": 2339.44
+  },
+  {
+    "Country": "Brazil",
+    "Year": 2011,
+    "Population": 200517584,
+    "KGOilPerCapita": 1346.65,
+    "ElectrickwhPerCapita": 2394.4
+  },
+  {
+    "Country": "Brazil",
+    "Year": 2012,
+    "Population": 202401584,
+    "KGOilPerCapita": 1391.91,
+    "ElectrickwhPerCapita": 2463.28
+  },
+  {
+    "Country": "Brazil",
+    "Year": 2013,
+    "Population": 204259377,
+    "KGOilPerCapita": 1437.8,
+    "ElectrickwhPerCapita": 2529.3
+  },
+  {
+    "Country": "China",
+    "Year": 2010,
+    "Population": 1337705000,
+    "KGOilPerCapita": 1845.74,
+    "ElectrickwhPerCapita": 2943.59
+  },
+  {
+    "Country": "China",
+    "Year": 2011,
+    "Population": 1344130000,
+    "KGOilPerCapita": 1994.4,
+    "ElectrickwhPerCapita": 3298
+  },
+  {
+    "Country": "China",
+    "Year": 2012,
+    "Population": 1350695000,
+    "KGOilPerCapita": 2079.12,
+    "ElectrickwhPerCapita": 3474.98
+  },
+  {
+    "Country": "China",
+    "Year": 2013,
+    "Population": 1357380000,
+    "KGOilPerCapita": 2226.27,
+    "ElectrickwhPerCapita": 3762.08
+  },
+  {
+    "Country": "India",
+    "Year": 2010,
+    "Population": 1230984504,
+    "KGOilPerCapita": 562.7,
+    "ElectrickwhPerCapita": 643.88
+  },
+  {
+    "Country": "India",
+    "Year": 2011,
+    "Population": 1247446011,
+    "KGOilPerCapita": 574.32,
+    "ElectrickwhPerCapita": 698.43
+  },
+  {
+    "Country": "India",
+    "Year": 2012,
+    "Population": 1263589639,
+    "KGOilPerCapita": 595.1,
+    "ElectrickwhPerCapita": 724.49
+  },
+  {
+    "Country": "India",
+    "Year": 2013,
+    "Population": 1279498874,
+    "KGOilPerCapita": 606.05,
+    "ElectrickwhPerCapita": 765
+  },
+  {
+    "Country": "Indonesia",
+    "Year": 2010,
+    "Population": 241613126,
+    "KGOilPerCapita": 866.83,
+    "ElectrickwhPerCapita": 636.55
+  },
+  {
+    "Country": "Indonesia",
+    "Year": 2011,
+    "Population": 244808254,
+    "KGOilPerCapita": 838.65,
+    "ElectrickwhPerCapita": 680.68
+  },
+  {
+    "Country": "Indonesia",
+    "Year": 2012,
+    "Population": 248037853,
+    "KGOilPerCapita": 854.07,
+    "ElectrickwhPerCapita": 718.68
+  },
+  {
+    "Country": "Indonesia",
+    "Year": 2013,
+    "Population": 251268276,
+    "KGOilPerCapita": 850.25,
+    "ElectrickwhPerCapita": 787.68
+  },
+  {
+    "Country": "Japan",
+    "Year": 2010,
+    "Population": 128070000,
+    "KGOilPerCapita": 3895.68,
+    "ElectrickwhPerCapita": 8337.13
+  },
+  {
+    "Country": "Japan",
+    "Year": 2011,
+    "Population": 127817277,
+    "KGOilPerCapita": 3614.38,
+    "ElectrickwhPerCapita": 7841.46
+  },
+  {
+    "Country": "Japan",
+    "Year": 2012,
+    "Population": 127561489,
+    "KGOilPerCapita": 3543.27,
+    "ElectrickwhPerCapita": 7752.72
+  },
+  {
+    "Country": "Japan",
+    "Year": 2013,
+    "Population": 127338621,
+    "KGOilPerCapita": 3570.44,
+    "ElectrickwhPerCapita": 7835.6
+  },
+  {
+    "Country": "Nigeria",
+    "Year": 2010,
+    "Population": 159424742,
+    "KGOilPerCapita": 752.52,
+    "ElectrickwhPerCapita": 135.64
+  },
+  {
+    "Country": "Nigeria",
+    "Year": 2011,
+    "Population": 163770669,
+    "KGOilPerCapita": 775.04,
+    "ElectrickwhPerCapita": 149.31
+  },
+  {
+    "Country": "Nigeria",
+    "Year": 2012,
+    "Population": 168240403,
+    "KGOilPerCapita": 796.63,
+    "ElectrickwhPerCapita": 155.85
+  },
+  {
+    "Country": "Nigeria",
+    "Year": 2013,
+    "Population": 172816517,
+    "KGOilPerCapita": 773.02,
+    "ElectrickwhPerCapita": 141.87
+  },
+  {
+    "Country": "Pakistan",
+    "Year": 2010,
+    "Population": 170043918,
+    "KGOilPerCapita": 496.34,
+    "ElectrickwhPerCapita": 466.57
+  },
+  {
+    "Country": "Pakistan",
+    "Year": 2011,
+    "Population": 173669648,
+    "KGOilPerCapita": 488.94,
+    "ElectrickwhPerCapita": 456.67
+  },
+  {
+    "Country": "Pakistan",
+    "Year": 2012,
+    "Population": 177392252,
+    "KGOilPerCapita": 483.44,
+    "ElectrickwhPerCapita": 451.7
+  },
+  {
+    "Country": "Pakistan",
+    "Year": 2013,
+    "Population": 181192646,
+    "KGOilPerCapita": 474.86,
+    "ElectrickwhPerCapita": 449.97
+  },
+  {
+    "Country": "Russia",
+    "Year": 2010,
+    "Population": 142849449,
+    "KGOilPerCapita": 4827.81,
+    "ElectrickwhPerCapita": 6409.9
+  },
+  {
+    "Country": "Russia",
+    "Year": 2011,
+    "Population": 142960868,
+    "KGOilPerCapita": 5057.52,
+    "ElectrickwhPerCapita": 6485.76
+  },
+  {
+    "Country": "Russia",
+    "Year": 2012,
+    "Population": 143201676,
+    "KGOilPerCapita": 5174.4,
+    "ElectrickwhPerCapita": 6617.14
+  },
+  {
+    "Country": "Russia",
+    "Year": 2013,
+    "Population": 143506911,
+    "KGOilPerCapita": 5093.06,
+    "ElectrickwhPerCapita": 6539.21
+  },
+  {
+    "Country": "United States",
+    "Year": 2010,
+    "Population": 309346863,
+    "KGOilPerCapita": 7161.52,
+    "ElectrickwhPerCapita": 13394.02
+  },
+  {
+    "Country": "United States",
+    "Year": 2011,
+    "Population": 311718857,
+    "KGOilPerCapita": 7029.25,
+    "ElectrickwhPerCapita": 13240.48
+  },
+  {
+    "Country": "United States",
+    "Year": 2012,
+    "Population": 314102623,
+    "KGOilPerCapita": 6812.49,
+    "ElectrickwhPerCapita": 12954.54
+  },
+  {
+    "Country": "United States",
+    "Year": 2013,
+    "Population": 316427395,
+    "KGOilPerCapita": 6915.84,
+    "ElectrickwhPerCapita": 12988.26
+  }
+]</ConnectString>
+				<DataProvider>JSON</DataProvider>
+			</ConnectionProperties>
+		</DataSource>
+	</DataSources>
+	<DataSets>
+		<DataSet Name="ResourceConsumption">
+			<Fields>
+				<Field Name="Country">
+					<DataField>Country</DataField>
+				</Field>
+				<Field Name="Year">
+					<DataField>Year</DataField>
+				</Field>
+				<Field Name="Population">
+					<DataField>Population</DataField>
+				</Field>
+				<Field Name="KGOilPerCapita">
+					<DataField>KGOilPerCapita</DataField>
+				</Field>
+				<Field Name="ElectrickwhPerCapita">
+					<DataField>ElectrickwhPerCapita</DataField>
+				</Field>
+			</Fields>
+			<Filters>
+				<Filter>
+					<FilterExpression>=Fields!Country.Value</FilterExpression>
+					<FilterValues>
+						<FilterValue>=Parameters!CountryParam.Value</FilterValue>
+					</FilterValues>
+					<Operator>Equal</Operator>
+				</Filter>
+			</Filters>
+			<Query>
+				<CommandText>$.[*]</CommandText>
+				<DataSourceName>ResourceConsumption</DataSourceName>
+			</Query>
+		</DataSet>
+	</DataSets>
+	<CustomProperties>
+		<CustomProperty>
+			<Name>PaperOrientation</Name>
+			<Value>Landscape</Value>
+		</CustomProperty>
+	</CustomProperties>
+</Report>
