@@ -5,7 +5,7 @@ Imports PdfSharp.Pdf
 Imports PdfSharp.Fonts
 Imports PdfSharp.Drawing
 Imports GrapeCity.ActiveReports.Drawing
-Imports GrapeCity.ActiveReports.Drawing.Gdi
+Imports PdfSharpFontResolver = PdfSharp.Fonts.IFontResolver
 
 Friend NotInheritable Class PdfFontsFactory
 	Private ReadOnly _options As XPdfFontOptions
@@ -59,9 +59,9 @@ Friend NotInheritable Class PdfFontsFactory
 	End Function
 
 	Private Class GdiFontResolver
-		Implements IFontResolver
+		Implements PdfSharpFontResolver
 
-		Function ResolveTypeface(familyName As String, isBold As Boolean, isItalic As Boolean) As FontResolverInfo Implements IFontResolver.ResolveTypeface
+		Function ResolveTypeface(familyName As String, isBold As Boolean, isItalic As Boolean) As FontResolverInfo Implements PdfSharpFontResolver.ResolveTypeface
 			Dim style = System.Drawing.FontStyle.Regular
 			If isBold Then style = style Or System.Drawing.FontStyle.Bold
 			If isItalic Then style = style Or System.Drawing.FontStyle.Italic
@@ -82,7 +82,7 @@ Friend NotInheritable Class PdfFontsFactory
 			End Try
 		End Function
 
-		Function GetFont(faceName As String) As Byte() Implements IFontResolver.GetFont
+		Function GetFont(faceName As String) As Byte() Implements PdfSharpFontResolver.GetFont
 			Dim fontName = GetFontName(faceName)
 			Dim fontData = GetFontBytes(fontName, GetFontStyle(faceName), &H66637474)
 			If fontData Is Nothing Then fontData = GetFontBytes(fontName, GetFontStyle(faceName), 0)

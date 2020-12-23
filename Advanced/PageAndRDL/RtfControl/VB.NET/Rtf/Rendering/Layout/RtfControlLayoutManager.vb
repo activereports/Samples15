@@ -34,10 +34,10 @@ Namespace Rendering.Layout
         Public Function Measure(ctx As LayoutContext) As LayoutResult Implements ILayoutManager.Measure
             Dim content = CType(ctx.ContentRange, RtfControlContentRange)
 
-			If _computedSize.Width = 0 Then _computedSize.Width = ctx.ContentRange.Owner.Width.ToTwips()
-			If _computedSize.Height = 0 Then _computedSize.Height = ctx.ContentRange.Owner.Height.ToTwips()
+            If _computedSize.Width = 0 Then _computedSize.Width = ctx.ReportItemSize.Width
+            If _computedSize.Height = 0 Then _computedSize.Height = ctx.ReportItemSize.Height
 
-			If ctx.VerticalLayout Then
+            If ctx.VerticalLayout Then
                 If (content Is Nothing) Then
                     Dim fitHeight = Math.Min(ctx.AvailableSize.Height, _computedSize.Height)
                     Dim range = New Range(0, fitHeight, 0, -1)

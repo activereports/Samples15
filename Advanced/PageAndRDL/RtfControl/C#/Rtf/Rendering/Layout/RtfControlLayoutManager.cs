@@ -39,10 +39,10 @@ namespace GrapeCity.ActiveReports.Samples.Rtf.Rendering.Layout
 			var content = ctx.ContentRange as RtfControlContentRange;
 
 			if (_computedSize.Width == 0)
-				_computedSize.Width = ctx.ContentRange.Owner.Width.ToTwips();
+				_computedSize.Width = ctx.ReportItemSize.Width;
 
 			if (_computedSize.Height == 0)
-				_computedSize.Height = ctx.ContentRange.Owner.Height.ToTwips();
+				_computedSize.Height = ctx.ReportItemSize.Height;
 			
 			if (ctx.VerticalLayout)
 			{

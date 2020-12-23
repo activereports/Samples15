@@ -53,37 +53,37 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gcef.Data.DataEngine, Version=3.0.0.0, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
+    <Reference Include="Gcef.Data.DataEngine, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
       <HintPath>..\packages\Gcef.Data.DataEngine.3.0.0\lib\net40\Gcef.Data.DataEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Gcef.Data.ExpressionInfo, Version=3.0.0.0, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
+    <Reference Include="Gcef.Data.ExpressionInfo, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
       <HintPath>..\packages\Gcef.Data.ExpressionInfo.3.0.0\lib\net40\Gcef.Data.ExpressionInfo.dll</HintPath>
     </Reference>
-    <Reference Include="Gcef.Data.VBFunctionLib, Version=3.0.0.0, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
+    <Reference Include="Gcef.Data.VBFunctionLib, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
       <HintPath>..\packages\Gcef.Data.VBFunctionLib.3.0.0\lib\net40\Gcef.Data.VBFunctionLib.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.0\lib\net462\GrapeCity.ActiveReports.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.1\lib\net462\GrapeCity.ActiveReports.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Win, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.0\lib\net462\GrapeCity.ActiveReports.Win.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.1\lib\net462\GrapeCity.ActiveReports.Win.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.DataProviders, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.1\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
     </Reference>
-    <Reference Include="GrapeCity.ActiveReports.Core.Rdl, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
+    <Reference Include="GrapeCity.ActiveReports.Core.Rdl, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.1.0\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rendering, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.1.0\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
     </Reference>
-    <Reference Include="GrapeCity.ActiveReports.Core.Scripting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Scripting.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Scripting.dll</HintPath>
+    <Reference Include="GrapeCity.ActiveReports.Core.Scripting, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Scripting.2.1.0\lib\net462\GrapeCity.ActiveReports.Core.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.DataVisualization.Chart, Culture=neutral, PublicKeyToken=8dbeb54e07a9de91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.3.304\lib\netstandard2.0\GrapeCity.DataVisualization.Chart.dll</HintPath>
+      <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.3.304\lib\net462\GrapeCity.DataVisualization.Chart.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">

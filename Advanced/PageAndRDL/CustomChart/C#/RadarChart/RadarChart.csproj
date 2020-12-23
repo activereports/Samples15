@@ -34,8 +34,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GrapeCity.ActiveReports.Core.Document.Drawing.Gc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.1.0.0\lib\net462\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.dll</HintPath>
+    <Reference Include="GrapeCity.ActiveReports.Core.Document.Drawing.Gc, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.1.0.1\lib\net462\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.dll</HintPath>
     </Reference>
     <Reference Include="Gcef.Data.DataEngine, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
       <HintPath>..\packages\Gcef.Data.DataEngine.3.0.0\lib\net40\Gcef.Data.DataEngine.dll</HintPath>
@@ -47,16 +47,16 @@
       <HintPath>..\packages\Gcef.Data.VBFunctionLib.3.0.0\lib\net40\Gcef.Data.VBFunctionLib.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.DataProviders, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.1\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rdl, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.1.0\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rendering, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.1.0\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.DataVisualization.Chart, Culture=neutral, PublicKeyToken=8dbeb54e07a9de91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.3.304\lib\netstandard2.0\GrapeCity.DataVisualization.Chart.dll</HintPath>
+      <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.3.304\lib\net462\GrapeCity.DataVisualization.Chart.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />

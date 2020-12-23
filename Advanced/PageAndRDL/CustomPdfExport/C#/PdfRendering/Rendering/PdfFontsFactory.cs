@@ -9,6 +9,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using FontStyle = GrapeCity.ActiveReports.Drawing.FontStyle;
+using PdfSharpFontResolver = PdfSharp.Fonts.IFontResolver;
 
 namespace GrapeCity.ActiveReports.Samples.Export.Rendering.PdfSharp
 {
@@ -69,7 +70,7 @@ namespace GrapeCity.ActiveReports.Samples.Export.Rendering.PdfSharp
 			return resultStyle;
 		}
 		
-		private class GdiFontResolver : IFontResolver
+		private class GdiFontResolver : PdfSharpFontResolver
 		{
 			public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
 			{
