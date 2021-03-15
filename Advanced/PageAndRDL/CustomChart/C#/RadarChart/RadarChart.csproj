@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GrapeCity.ActiveReports.Core.Document.Drawing.Gc, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.1.0.2\lib\net462\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.1.0.3\lib\net462\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.dll</HintPath>
     </Reference>
     <Reference Include="Gcef.Data.DataEngine, Culture=neutral, PublicKeyToken=0b5e1563d2869208, processorArchitecture=MSIL">
       <HintPath>..\packages\Gcef.Data.DataEngine.3.0.0\lib\net40\Gcef.Data.DataEngine.dll</HintPath>

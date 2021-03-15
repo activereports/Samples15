@@ -54,10 +54,10 @@
       <HintPath>..\packages\Gcef.Data.VBFunctionLib.3.0.0\lib\net40\Gcef.Data.VBFunctionLib.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.4\lib\net462\GrapeCity.ActiveReports.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.5\lib\net462\GrapeCity.ActiveReports.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Win, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.4\lib\net462\GrapeCity.ActiveReports.Win.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.15.0.5\lib\net462\GrapeCity.ActiveReports.Win.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rdl, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
       <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.1.3\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
