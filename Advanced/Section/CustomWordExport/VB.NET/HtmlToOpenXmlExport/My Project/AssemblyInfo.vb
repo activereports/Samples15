@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("HtmlToOpenXmlExport")>
 <Assembly: AssemblyCompany("GrapeCity")>
 <Assembly: AssemblyProduct("HtmlToOpenXmlExport")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 
 <Assembly: ComVisible(False)>
 

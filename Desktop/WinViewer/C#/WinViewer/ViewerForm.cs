@@ -45,7 +45,6 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 
 				_openFileName = file.FullName;
 				exportToolStripMenuItem.Enabled = true;
-				saveAsRDFToolStripMenuItem.Enabled = true;
 				SetReportName(openFileDialog.FileName);
 			}
 			catch (Exception ex)
@@ -91,7 +90,7 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 		{
 			if (_exportForm == null)
 			{
-				_exportForm = new ExportForm(ConfigurationHelper.GetConfigFlag(ConfigurationHelper.UsePdfExportFilterKey) == true);
+				_exportForm = new ExportForm();
 			}
 
 			var reportType = _reportType ?? DetermineOpenedReportType();
@@ -106,38 +105,6 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 			if (viewer.IsFplDocumentOpened())
 				return ExportForm.ReportType.PageFpl;
 			return ExportForm.ReportType.PageCpl;
-		}
-
-		private void SaveAsRDFItemHandler(object sender, EventArgs e)
-		{
-			var saveFileDialog = new SaveFileDialog()
-			{
-				FileName = Path.GetFileNameWithoutExtension(_openFileName) + ".rdf",
-				Filter = "*.rdf | *.rdf"
-			};
-
-			if (saveFileDialog.ShowDialog() != DialogResult.OK)
-			{
-				return;
-			}
-
-			string saveFileName = saveFileDialog.FileName;
-			
-
-			if (_reportType.Value != ExportForm.ReportType.Section )
-			{
-				var outputDirectory = new DirectoryInfo(Path.GetDirectoryName(saveFileName));
-				var outputProvider = new ActiveReports.Rendering.IO.FileStreamProvider(outputDirectory, Path.GetFileNameWithoutExtension(saveFileName));
-				outputProvider.OverwriteOutputFile = true;
-				var renderingExtension = new Export.Rdf.RdfRenderingExtension();
-				var settings = new Export.Rdf.Settings();
-				viewer.Render(renderingExtension, outputProvider, settings);
-			}
-			else
-			{
-				using (var stream = new FileStream(Path.Combine(saveFileDialog.FileName), FileMode.Create))
-					viewer.Document.Save(stream, Document.Section.RdfFormat.ARNet);
-			}
 		}
 	}
 }

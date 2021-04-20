@@ -39,7 +39,6 @@ Partial Friend Class ViewerForm
 			_openFileName = file.FullName
 
 			ExportToolStripMenuItem.Enabled = True
-			SaveAsRDFToolStripMenuItem.Enabled = True
 			SetReportName(openFileDialog.FileName)
 		Catch ex As Exception
 			viewer.HandleError(ex)
@@ -81,9 +80,7 @@ Partial Friend Class ViewerForm
 
 	Private Sub ExportMenuItemHandler(sender As Object, e As EventArgs) Handles ExportToolStripMenuItem.Click
 		If _exportForm Is Nothing Then
-			Dim flag As Boolean?
-			flag = ConfigurationHelper.GetConfigFlag(ConfigurationHelper.UsePdfExportFilterKey)
-			_exportForm = New ExportForm(flag.HasValue AndAlso flag.Value = True)
+			_exportForm = New ExportForm()
 		End If
 
 		Dim reportType = If(_reportType, DetermineOpenedReportType())
@@ -100,30 +97,4 @@ Partial Friend Class ViewerForm
 		End If
 		Return ExportForm.ReportType.PageCpl
 	End Function
-
-	Private Sub SaveAsRDFItemHandler(sender As Object, e As EventArgs) Handles SaveAsRDFToolStripMenuItem.Click
-		Dim saveFileDialog As Object = New SaveFileDialog() With {
-		.FileName = Path.GetFileNameWithoutExtension(_openFileName) + ".rdf",
-		.Filter = "*.rdf | *.rdf"
-	}
-
-		If saveFileDialog.ShowDialog() <> DialogResult.OK Then
-			Return
-		End If
-
-		Dim saveFileName As String = saveFileDialog.FileName
-
-		If _reportType.Value <> ExportForm.ReportType.Section Then
-			Dim outputDirectory = New DirectoryInfo(Path.GetDirectoryName(saveFileName))
-			Dim outputProvider = New Rendering.IO.FileStreamProvider(outputDirectory, Path.GetFileNameWithoutExtension(saveFileName))
-			outputProvider.OverwriteOutputFile = True
-			Dim renderingExtension = New Export.Rdf.RdfRenderingExtension()
-			Dim settings = New Export.Rdf.Settings()
-			viewer.Render(renderingExtension, outputProvider, settings)
-		Else
-			Using stream = New FileStream(Path.Combine(saveFileDialog.FileName), FileMode.Create)
-				viewer.Document.Save(stream, Document.Section.RdfFormat.ARNet)
-			End Using
-		End If
-	End Sub
 End Class

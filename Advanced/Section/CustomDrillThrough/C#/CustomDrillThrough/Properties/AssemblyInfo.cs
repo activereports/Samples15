@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CustomDrillThrough")]
 [assembly: AssemblyCompany("GrapeCity")]
 [assembly: AssemblyProduct("CustomDrillThrough")]
-[assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")]
+[assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")]
 
 // FXCop Added attributes
 [assembly:CLSCompliant(true)]

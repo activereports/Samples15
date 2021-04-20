@@ -32,7 +32,6 @@ Partial Class ViewerForm
 		Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-		Me.SaveAsRDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,7 +80,7 @@ Partial Class ViewerForm
 		'
 		'FileToolStripMenuItem
 		'
-		Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ExportToolStripMenuItem, Me.SaveAsRDFToolStripMenuItem, Me.ExitToolStripMenuItem})
+		Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ExportToolStripMenuItem, Me.ExitToolStripMenuItem})
 		Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
 		resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
 		'
@@ -94,11 +93,6 @@ Partial Class ViewerForm
 		'
 		resources.ApplyResources(Me.ExportToolStripMenuItem, "ExportToolStripMenuItem")
 		Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-		'
-		'SaveAsRDFToolStripMenuItem
-		'
-		resources.ApplyResources(Me.SaveAsRDFToolStripMenuItem, "SaveAsRDFToolStripMenuItem")
-		Me.SaveAsRDFToolStripMenuItem.Name = "SaveAsRDFToolStripMenuItem"
 		'
 		'ExitToolStripMenuItem
 		'
@@ -142,5 +136,4 @@ Partial Class ViewerForm
 	Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
 	Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
 	Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-	Private WithEvents SaveAsRDFToolStripMenuItem As ToolStripMenuItem
 End Class

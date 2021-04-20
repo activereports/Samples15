@@ -332,6 +332,9 @@ namespace GrapeCity.ActiveReports.Designer.Win
 				return;
 
 			arDesigner.ExecuteAction(DesignerAction.NewReport);
+
+			var newReportName = arDesigner.ReportType == DesignerReportType.Section ? Resources.DefaultReportNameRpx : Resources.DefaultReportNameRdlx;
+			SetReportName(newReportName);
 		}
 
 		private void OnOpen(object sender, EventArgs e)
@@ -436,7 +439,7 @@ namespace GrapeCity.ActiveReports.Designer.Win
 		{
 			if (_exportForm == null)
 			{
-				_exportForm = new ExportForm(ConfigurationHelper.GetConfigFlag(ConfigurationHelper.UsePdfExportFilterKey) == true);
+				_exportForm = new ExportForm();
 			}
 			_exportForm.Show(this, new ExportViewer(arDesigner.ReportViewer), _exportReportType);
 		}

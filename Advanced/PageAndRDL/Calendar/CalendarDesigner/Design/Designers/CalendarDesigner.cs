@@ -44,6 +44,7 @@ using VerticalAlign = GrapeCity.ActiveReports.Calendar.Components.Calendar.Verti
 using FontWeight = GrapeCity.ActiveReports.Drawing.FontWeight;
 using System.Runtime.InteropServices;
 using GrapeCity.ActiveReports.Drawing.Gdi;
+using GrapeCity.ActiveReports.Drawing.Core;
 
 namespace GrapeCity.ActiveReports.Calendar.Design.Designers
 {
@@ -3430,7 +3431,7 @@ namespace GrapeCity.ActiveReports.Calendar.Design.Designers
 			ScaleToTwipsGraphicsAndBound(graphics, ref rect);
 
 			// create gdi canvas wrapper to use in renderer
-			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(graphics);
+			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(graphics, null, null, (IFontsFactory)null);
 
 			// render calendar to canvas
 			CalendarRenderer.Instance.Render(this, new MonthInfo(DateTime.Now), canvas, rect);

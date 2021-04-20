@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -8,6 +10,7 @@ using GrapeCity.ActiveReports.Export;
 using GrapeCity.ActiveReports.Export.Html;
 using GrapeCity.ActiveReports.Export.Html.Section;
 using HtmlToOpenXml;
+using HtmlToOpenXml.IO;
 
 namespace GrapeCity.ActiveReports.Samples.WordExport
 {
@@ -31,10 +34,7 @@ namespace GrapeCity.ActiveReports.Samples.WordExport
 					new DocumentFormat.OpenXml.Wordprocessing.Document(new Body()).Save(mainPart);
 				}
 
-				var converter = new HtmlConverter(mainPart);
-				converter.ImageProcessing = ImageProcessing.ManualProvisioning;
-				converter.ProvisionImage += OnProvisionImage;
-
+				var converter = new HtmlConverter(mainPart, new CustomWebRequest());
 				var paragraphs = converter.Parse(html);
 
 				Body body = mainPart.Document.Body;
@@ -97,19 +97,6 @@ namespace GrapeCity.ActiveReports.Samples.WordExport
 			}
 		}
 
-		private void OnProvisionImage(object sender, ProvisionImageEventArgs e)
-		{
-			string filename = Path.GetFileName(e.ImageUrl.OriginalString);
-			var imagePath = Path.Combine(_htmlPath, filename);
-			if (!File.Exists(imagePath))
-			{
-				//e.Cancel = true;
-				return;
-			}
-
-			e.Provision(File.ReadAllBytes(imagePath));
-		}
-
 		private void ClearHtmlPath()
 		{
 			foreach (var file in new DirectoryInfo(_htmlPath).GetFiles())
@@ -155,5 +142,34 @@ namespace GrapeCity.ActiveReports.Samples.WordExport
 		{
 			throw new NotSupportedException("It's not allowed to use IOutputHtml");
 		}
-	}
+
+		private class CustomWebRequest : IWebRequest
+		{
+			public Task<HtmlToOpenXml.IO.Resource> FetchAsync(Uri requestUri, CancellationToken cancellationToken)
+			{
+				string fileName = Path.GetFileName(requestUri.OriginalString);
+				var imagePath = Path.Combine(_htmlPath, fileName);
+
+				var task = new Task<HtmlToOpenXml.IO.Resource>(() =>
+				{
+					var res = new HtmlToOpenXml.IO.Resource();
+					res.Content = File.OpenRead(imagePath);
+					return res;
+				});
+				task.Start();
+
+				return task;
+			}
+
+			public void Dispose()
+			{
+				throw new NotImplementedException();
+			}
+
+			public bool SupportsProtocol(string protocol)
+			{
+				throw new NotImplementedException();
+			}
+		}
+	}    
 }

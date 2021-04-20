@@ -37,7 +37,6 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.saveAsRDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +91,6 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.exportToolStripMenuItem,
-            this.saveAsRDFToolStripMenuItem,
             this.closeToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
@@ -108,12 +106,6 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 			resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportMenuItemHandler);
-			// 
-			// saveAsRDFToolStripMenuItem
-			// 
-			resources.ApplyResources(this.saveAsRDFToolStripMenuItem, "saveAsRDFToolStripMenuItem");
-			this.saveAsRDFToolStripMenuItem.Name = "saveAsRDFToolStripMenuItem";
-			this.saveAsRDFToolStripMenuItem.Click += new System.EventHandler(this.SaveAsRDFItemHandler);
 			// 
 			// closeToolStripMenuItem
 			// 
@@ -163,6 +155,5 @@ namespace GrapeCity.ActiveReports.Viewer.Win
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem saveAsRDFToolStripMenuItem;
 	}
 }

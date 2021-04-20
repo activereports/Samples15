@@ -4,9 +4,11 @@ Imports GrapeCity.ActiveReports.Export
 Imports GrapeCity.ActiveReports.Document
 Imports DocumentFormat.OpenXml.Wordprocessing
 Imports DocumentFormat.OpenXml.Packaging
-Imports System.IO
 Imports DocumentFormat.OpenXml
 Imports HtmlToOpenXml
+Imports HtmlToOpenXml.IO
+Imports System.IO
+Imports System.Threading
 
 Public Class HtmlToOpenXmlExport
 	Implements IDocumentExport
@@ -27,10 +29,7 @@ Public Class HtmlToOpenXmlExport
 				doc.Save(mainPart)
 			End If
 
-			Dim converter As New HtmlConverter(mainPart)
-			converter.ImageProcessing = ImageProcessing.ManualProvisioning
-			AddHandler converter.ProvisionImage, AddressOf OnProvisionImage
-
+			Dim converter As New HtmlConverter(mainPart, New CustomWebRequest())
 			Dim paragraphs As IList(Of OpenXmlCompositeElement) = converter.Parse(html)
 
 			Dim body As Body = mainPart.Document.Body
@@ -92,17 +91,6 @@ Public Class HtmlToOpenXmlExport
 		End Using
 	End Function
 
-	Private Sub OnProvisionImage(sender As Object, e As ProvisionImageEventArgs)
-		Dim filename As String = Path.GetFileName(e.ImageUrl.OriginalString)
-		Dim imagePath = Path.Combine(_htmlPath, filename)
-		If Not File.Exists(imagePath) Then
-			'e.Cancel = True
-			Return
-		End If
-
-		e.Provision(File.ReadAllBytes(imagePath))
-	End Sub
-
 	Private Sub ClearHtmlPath()
 		For Each file In New DirectoryInfo(_htmlPath).GetFiles()
 			file.Delete()
@@ -139,4 +127,28 @@ Public Class HtmlToOpenXmlExport
 	Sub Export(document As SectionDocument, outputHandler As IOutputHtml, pageRange As String) Implements IDocumentExport.Export
 		Throw New NotSupportedException("It's not allowed to use IOutputHtml")
 	End Sub
+
+	Private Class CustomWebRequest
+		Implements IWebRequest
+
+		Public Function FetchAsync(requestUri As Uri, cancellationToken As CancellationToken) As Task(Of HtmlToOpenXml.IO.Resource) Implements IWebRequest.FetchAsync
+			Dim fileName As String = Path.GetFileName(requestUri.OriginalString)
+			Dim imagePath = Path.Combine(_htmlPath, fileName)
+			Dim task = New Task(Of HtmlToOpenXml.IO.Resource)(Function()
+																  Dim res = New HtmlToOpenXml.IO.Resource()
+																  res.Content = File.OpenRead(imagePath)
+																  Return res
+															  End Function)
+			task.Start()
+			Return task
+		End Function
+
+		Public Sub Dispose() Implements IDisposable.Dispose
+			Throw New NotImplementedException()
+		End Sub
+
+		Public Function SupportsProtocol(protocol As String) As Boolean Implements IWebRequest.SupportsProtocol
+			Throw New NotImplementedException()
+		End Function
+	End Class
 End Class

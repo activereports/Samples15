@@ -9,6 +9,7 @@ using GrapeCity.ActiveReports.Document;
 using NUnit.Framework;
 using System.Threading;
 using GrapeCity.ActiveReports.Drawing.Gdi;
+using GrapeCity.ActiveReports.Drawing.Core;
 
 namespace GrapeCity.ActiveReports.Calendar.Tests.Calendar
 {
@@ -54,7 +55,7 @@ namespace GrapeCity.ActiveReports.Calendar.Tests.Calendar
 			CalendarDesigner.ScaleToTwipsGraphicsAndBound(GetGraphics(), ref rect);
 
 			// create gdi canvas wrapper to use in renderer
-			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(GetGraphics());
+			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(GetGraphics(), null, null, (IFontsFactory)null);
 
 			// render calendar to canvas
 			CalendarRenderer.Instance.Render(content, canvas, rect);
@@ -82,7 +83,7 @@ namespace GrapeCity.ActiveReports.Calendar.Tests.Calendar
 			CalendarDesigner.ScaleToTwipsGraphicsAndBound(GetGraphics(), ref rect);
 
 			// create gdi canvas wrapper to use in renderer
-			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(GetGraphics());
+			IDrawingCanvas canvas = GraphicsCanvasFactory.Create(GetGraphics(), null, null, (IFontsFactory)null);
 
 			// render calendar to canvas
 			CalendarRenderer.Instance.Render(content, canvas, rect);
@@ -113,7 +114,7 @@ namespace GrapeCity.ActiveReports.Calendar.Tests.Calendar
 			{
 				using (var graphics = Graphics.FromHwnd(IntPtr.Zero))
 				{
-					var canvas = GraphicsCanvasFactory.Create(graphics);
+					var canvas = GraphicsCanvasFactory.Create(graphics, null, null, (IFontsFactory)null);
 					(calendar.GetRenderer<IGraphicsRenderer>() as CalendarRenderer)
 						.Render(content, canvas, rect);
 				}

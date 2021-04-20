@@ -106,8 +106,8 @@ public void ActiveReport_ReportStart()
 	strSQL.Append("Employees INNER JOIN ScheduleOfTime ON Employees.EmployeeID = ScheduleOfTime.EmployeeID ");
 	strSQL.Append("WHERE ");
 	strSQL.Append("Employees.EmployeeID = '" + EmployeeID + "' And ");
-	strSQL.Append("(ScheduleOfTime.Date) >= #" + StartDate.ToString("MM/dd/yyyy") + "# And ");
-	strSQL.Append("(ScheduleOfTime.Date) <= #" + EndDate.ToString("MM/dd/yyyy") + "# ");
+	strSQL.Append("(ScheduleOfTime.Date) >= #" + StartDate.ToString("MM'/'dd'/'yyyy") + "# And ");
+	strSQL.Append("(ScheduleOfTime.Date) <= #" + EndDate.ToString("MM'/'dd'/'yyyy") + "# ");
 	strSQL.Append("ORDER BY ");
 	strSQL.Append("Employees.EmployeeID, ScheduleOfTime.Date, ScheduleOfTime.StartTime");
 

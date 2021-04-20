@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("SvgImage")>
 <Assembly: AssemblyCompany("GrapeCity")>
 <Assembly: AssemblyProduct("SvgImage")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 
 <Assembly: ComVisible(False)>
 

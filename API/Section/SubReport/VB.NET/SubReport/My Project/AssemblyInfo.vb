@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("SubReport")> 
 <Assembly: AssemblyCompany("GrapeCity")> 
 <Assembly: AssemblyProduct("SubReport")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 <Assembly: CLSCompliant(True)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM

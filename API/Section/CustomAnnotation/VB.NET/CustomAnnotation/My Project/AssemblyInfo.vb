@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("CustomAnnotation")> 
 <Assembly: AssemblyCompany("GrapeCity")> 
 <Assembly: AssemblyProduct("CustomAnnotation")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 
 <Assembly: ComVisible(False)>
 

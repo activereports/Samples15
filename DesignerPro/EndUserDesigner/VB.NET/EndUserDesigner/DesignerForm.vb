@@ -297,6 +297,9 @@ Public Class DesignerForm
 		End If
 
 		arDesigner.ExecuteAction(DesignerAction.NewReport)
+
+		Dim newReportName = If(arDesigner.ReportType = DesignerReportType.Section, My.Resources.DefaultReportNameRpx, My.Resources.DefaultReportNameRdlx)
+		SetReportName(newReportName)
 	End Sub
 
 	Private Sub OnOpen(sender As Object, e As EventArgs)
@@ -378,7 +381,7 @@ Public Class DesignerForm
 
 	Private Sub PerformExport()
 		If _exportForm Is Nothing Then
-			_exportForm = New ExportForm(ConfigurationHelper.GetConfigFlag(ConfigurationHelper.UsePdfExportFilterKey).HasValue AndAlso ConfigurationHelper.GetConfigFlag(ConfigurationHelper.UsePdfExportFilterKey).Value = True)
+			_exportForm = New ExportForm()
 		End If
 		_exportForm.Show(Me, New ExportViewer(arDesigner.ReportViewer), _exportReportType)
 	End Sub

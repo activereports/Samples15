@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("Charting")> 
 <Assembly: AssemblyCompany("GrapeCity")> 
 <Assembly: AssemblyProduct("Charting")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 <Assembly: CLSCompliant(True)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM

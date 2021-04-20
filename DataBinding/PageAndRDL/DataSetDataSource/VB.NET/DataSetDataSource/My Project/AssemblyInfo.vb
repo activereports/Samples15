@@ -7,7 +7,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("DataSetDataSource")> 
 <Assembly: AssemblyCompany("GrapeCity")> 
 <Assembly: AssemblyProduct("DataSetDataSource")>
-<Assembly: AssemblyCopyright("Copyright(c) 2020 GrapeCity, inc")>
+<Assembly: AssemblyCopyright("Copyright(c) 2021 GrapeCity, inc")>
 
 <Assembly: ComVisible(False)>
 

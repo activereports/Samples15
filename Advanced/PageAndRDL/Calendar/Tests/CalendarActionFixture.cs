@@ -89,7 +89,7 @@ namespace GrapeCity.ActiveReports.Calendar.Tests
 					if (child.ContentRange is CalendarContentRange)
 					{
 						// TODO - fix!!!
-						_graphicsRenderer.Render(new GraphicsRenderContext(this, GraphicsCanvasFactory.Create(GetGraphics()), new TextMetricsProvider(FontsFactory.Instance), RenderersFactory.Instance, null), child);
+						_graphicsRenderer.Render(new GraphicsRenderContext(this, GraphicsCanvasFactory.Create(GetGraphics(), null, null, (IFontsFactory)null), new TextMetricsProvider(FontsFactory.Instance), RenderersFactory.Instance, null), child);
 						_calendarLayoutArea = child;
 						break;
 					}

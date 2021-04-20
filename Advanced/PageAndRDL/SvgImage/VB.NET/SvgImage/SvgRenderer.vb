@@ -4,7 +4,6 @@ Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Numerics
 Imports GrapeCity.ActiveReports.Drawing
-Imports GrapeCity.ActiveReports.Drawing.Gdi
 Imports GrapeCity.ActiveReports.Extensibility.Rendering
 Imports Svg
 
@@ -23,6 +22,7 @@ Public NotInheritable Class SvgRenderer
 	Private _currentClip As Region
 	Private _initialTransform As Matrix3x2
 	Private _currentTransform As Matrix3x2
+	Private _smoothingMode As SmoothingModeEx
 
 	Public Sub New(context As GraphicsRenderContext, bounds As RectangleF)
 		_innerGraphics = context.Canvas
@@ -144,6 +144,9 @@ Public NotInheritable Class SvgRenderer
 	Sub DrawPath(pen As Pen, path As GraphicsPath) Implements ISvgRenderer.DrawPath
 		If (path.PointCount = 0) Then Return
 		If (pen Is Nothing Or pen.Color.A = 0) Then Return
+		If (_innerGraphics.SmoothingMode <> _smoothingMode) Then
+			_innerGraphics.SmoothingMode = _smoothingMode
+		End If
 
 		Using penEx = _innerGraphics.CreatePen(pen.Color, pen.Width * TwipsInPixel)
 			penEx.Alignment = CType((CType(pen.Alignment, Integer)), GrapeCity.ActiveReports.Drawing.PenAlignment)
@@ -159,6 +162,9 @@ Public NotInheritable Class SvgRenderer
 	Sub FillPath(brush As Brush, path As GraphicsPath) Implements ISvgRenderer.FillPath
 		If (path.PointCount = 0) Then Return
 		If (path.PointCount = 0) Then Return
+		If (_innerGraphics.SmoothingMode <> _smoothingMode) Then
+			_innerGraphics.SmoothingMode = _smoothingMode
+		End If
 
 		If TypeOf brush Is SolidBrush Then
 			Dim solidBrush = CType(brush, SolidBrush)
@@ -208,12 +214,17 @@ Public NotInheritable Class SvgRenderer
 	Sub SetClip(region As Region, Optional combineMode As CombineMode = CombineMode.Replace) Implements ISvgRenderer.SetClip
 		If _boundables.Count = 0 Then Return
 		If Not (combineMode = CombineMode.Intersect) And Not (combineMode = CombineMode.Replace) Then Throw New NotImplementedException()
-		If combineMode = CombineMode.Replace Then
-			_innerGraphics.PopState()
-			_innerGraphics.PushState()
+		Dim transform As Matrix3x2 = Matrix3x2.Multiply(_currentTransform, _initialTransform)
+		Dim resetPrevClip As Boolean = True
+		If (_innerGraphics.Transform <> transform) Then
+			resetPrevClip = False
+			ResetClip(region, combineMode, transform)
 		End If
-		_innerGraphics.Transform = Matrix3x2.Multiply(_currentTransform, _initialTransform)
 		If combineMode = CombineMode.Replace Or _currentClip Is Nothing Or region Is Nothing Then
+			If (_currentClip Is Nothing Or _currentClip IsNot region) And resetPrevClip Then
+				resetPrevClip = False
+				ResetClip(region, combineMode, transform)
+			End If
 			_currentClip = region
 		ElseIf _currentClip IsNot region Then
 			_currentClip = _currentClip.Clone()
@@ -221,10 +232,27 @@ Public NotInheritable Class SvgRenderer
 		End If
 		If _currentClip Is Nothing Then Return
 		Dim bounds As RectangleF
-		For Each clipper In RegionParser.ParseRegion(_currentClip, (CType(Me, IGraphicsProvider)).GetGraphics(), bounds)
+		Dim clippers = RegionParser.ParseRegion(_currentClip, (CType(Me, IGraphicsProvider)).GetGraphics(), bounds)
+		If resetPrevClip Then
+			For Each clipper In clippers
+				If TypeOf clipper Is RectangleF Then
+					Dim rect = CType(clipper, RectangleF)
+					If (rect <> _boundables.Peek().Bounds) Then
+						ResetClip(region, combineMode, transform)
+						Exit For
+					End If
+				ElseIf TypeOf clipper Is GraphicsPath Then
+					ResetClip(region, combineMode, transform)
+					Exit For
+				End If
+			Next
+		End If
+		For Each clipper In clippers
 			If TypeOf clipper Is RectangleF Then
 				Dim rect = CType(clipper, RectangleF)
-				If Not (rect = _boundables.Peek().Bounds) Then _innerGraphics.IntersectClip(Convert(rect))
+				If (rect <> _boundables.Peek().Bounds) Then
+					_innerGraphics.IntersectClip(Convert(rect))
+				End If
 			ElseIf TypeOf clipper Is GraphicsPath Then
 				Dim path = CType(clipper, GraphicsPath)
 				_innerGraphics.IntersectClip(Convert(path))
@@ -269,10 +297,10 @@ Public NotInheritable Class SvgRenderer
 
 	Property SmoothingMode() As SmoothingMode Implements ISvgRenderer.SmoothingMode
 		Get
-			Return CType([Enum].Parse(GetType(SmoothingMode), _innerGraphics.SmoothingMode.ToString()), SmoothingMode)
+			Return CType(CType(_smoothingMode, Int32), SmoothingMode)
 		End Get
 		Set
-			_innerGraphics.SmoothingMode = CType([Enum].Parse(GetType(SmoothingModeEx), Value.ToString()), SmoothingModeEx)
+			_smoothingMode = CType(CType(Value, Int32), SmoothingModeEx)
 		End Set
 	End Property
 
@@ -293,6 +321,16 @@ Public NotInheritable Class SvgRenderer
 			Return TwipsPerInch / (CType(Me, ISvgRenderer)).DpiY
 		End Get
 	End Property
+
+	Private Sub ResetClip(region As Region, combineMode As CombineMode, transform As Matrix3x2)
+		If (combineMode = CombineMode.Replace Or region Is Nothing) Then
+			_innerGraphics.PopState()
+			_innerGraphics.PushState()
+		End If
+		If (_innerGraphics.Transform <> transform) Then
+			_innerGraphics.Transform = transform
+		End If
+	End Sub
 
 	Private Shared Function GetTransform(srcRect As RectangleF, dstRect As RectangleF) As Matrix3x2
 		Dim tr = Matrix3x2.CreateTranslation(dstRect.X, dstRect.Y)
@@ -331,8 +369,8 @@ Public NotInheritable Class SvgRenderer
 					startPoint = pathPoints(iPoint)
 					Exit Select
 				Case PathPointType.Start
+					path.StartFigure()
 					startPoint = pathPoints(iPoint)
-					If iPoint > 0 Then path.CloseFigure()
 					Exit Select
 			End Select
 
@@ -392,7 +430,7 @@ Public NotInheritable Class SvgRenderer
 		Private Const FMT_SHORT As Integer = &H4000
 		Private Const HEADER_SIZE As Integer = &H10
 
-		Shared Function ParseRegion(region As Region, g As Graphics, ByRef bounds As RectangleF) As IEnumerable(Of Object)
+		Shared Function ParseRegion(region As Region, g As Graphics, ByRef bounds As RectangleF) As IList(Of Object)
 			Dim result = New List(Of Object)()
 			Dim data = region.GetRegionData().Data
 			Dim size As Integer = 8 + GetInt32(data, 0)

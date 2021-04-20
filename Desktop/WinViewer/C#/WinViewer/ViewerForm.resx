@@ -174,15 +174,6 @@
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="saveAsRDFToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="saveAsRDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="saveAsRDFToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save as RDF</value>
-  </data>
   <data name="closeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Q</value>
   </data>
@@ -271,12 +262,6 @@
     <value>exportToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exportToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;saveAsRDFToolStripMenuItem.Name" xml:space="preserve">
-    <value>saveAsRDFToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;saveAsRDFToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;closeToolStripMenuItem.Name" xml:space="preserve">

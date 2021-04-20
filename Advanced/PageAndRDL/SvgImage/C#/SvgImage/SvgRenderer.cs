@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using GrapeCity.ActiveReports.Drawing;
-using GrapeCity.ActiveReports.Drawing.Gdi;
 using GrapeCity.ActiveReports.Extensibility.Rendering;
 using Svg;
 
@@ -30,6 +29,7 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 		private Region _currentClip;
 		private Matrix3x2 _initialTransform;
 		private Matrix3x2 _currentTransform;
+		private SmoothingModeEx _smoothingMode;
 		
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ISvgRenderer"/> class.
@@ -176,6 +176,9 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				return;
 			if (pen == null || pen.Color.A == 0)
 				return;
+
+			if (_innerGraphics.SmoothingMode != _smoothingMode)
+				_innerGraphics.SmoothingMode = _smoothingMode;
 			
 			using (var penEx = _innerGraphics.CreatePen(pen.Color, pen.Width * TwipsInPixel))
 			{
@@ -194,6 +197,9 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 		{
 			if (path.PointCount == 0)
 				return;
+
+			if (_innerGraphics.SmoothingMode != _smoothingMode)
+				_innerGraphics.SmoothingMode = _smoothingMode;
 
 			if (brush is SolidBrush)
 			{
@@ -259,15 +265,30 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				throw new NotImplementedException();
 
 			// reset current clip
-			if (combineMode == CombineMode.Replace || region == null)
+			var transform = Matrix3x2.Multiply(_currentTransform, _initialTransform);
+			bool resetPrevClip = true;
+			Action resetClip = () =>
 			{
-				_innerGraphics.PopState();
-				_innerGraphics.PushState();
+				if (!resetPrevClip)
+					return;
+				resetPrevClip = false;
+				if (combineMode == CombineMode.Replace || region == null)
+				{
+					_innerGraphics.PopState();
+					_innerGraphics.PushState();
+				}
+				if (_innerGraphics.Transform != transform)
+					_innerGraphics.Transform = transform;
+			};
+			if (_innerGraphics.Transform != transform)
+			{
+				resetClip();
 			}
-			_innerGraphics.Transform = Matrix3x2.Multiply(_currentTransform, _initialTransform);
 
 			if (combineMode == CombineMode.Replace || _currentClip == null || region == null)
 			{
+				if (_currentClip == null || _currentClip != region)
+					resetClip();
 				_currentClip = region;
 			}
 			else if (_currentClip != region)
@@ -281,11 +302,33 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				return;
 			
 			RectangleF bounds;
-			foreach (var clipper in RegionParser.ParseRegion(_currentClip, ((IGraphicsProvider) this).GetGraphics(), out bounds))
+			var clippers = RegionParser.ParseRegion(_currentClip, ((IGraphicsProvider) this).GetGraphics(), out bounds);
+
+			var boundary = _boundables.Peek().Bounds;
+			if (resetPrevClip)
+			{
+				foreach (var clipper in clippers)
+					if (clipper is RectangleF)
+					{
+						var rect = (RectangleF) clipper;
+						if (rect != boundary)
+						{
+							resetClip();
+							break;
+						}
+					}
+					else if (clipper is GraphicsPath)
+					{
+						resetClip();
+						break;
+					}
+			}
+
+			foreach (var clipper in clippers)
 				if (clipper is RectangleF)
 				{
 					var rect = (RectangleF) clipper;
-					if (rect != _boundables.Peek().Bounds)
+					if (rect != boundary)
 						_innerGraphics.IntersectClip(Convert(rect));
 				}
 				else if (clipper is GraphicsPath)
@@ -345,8 +388,8 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 
 		SmoothingMode ISvgRenderer.SmoothingMode
 		{
-			get { return (SmoothingMode)Enum.Parse(typeof(SmoothingMode), _innerGraphics.SmoothingMode.ToString()); }
-			set { _innerGraphics.SmoothingMode = (SmoothingModeEx)Enum.Parse(typeof(SmoothingModeEx), value.ToString()); }
+			get { return (SmoothingMode)_smoothingMode; }
+			set { _smoothingMode = (SmoothingModeEx)(int)value; }
 		}
 
 		#endregion
@@ -409,9 +452,8 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 						startPoint = pathPoints[iPoint];
 						break;
 					case PathPointType.Start:
+						path.StartFigure();
 						startPoint = pathPoints[iPoint];
-						if (iPoint > 0)
-							path.CloseFigure();
 						break;
 				}
 				iPoint++;
@@ -486,7 +528,7 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 	
 			private const int HEADER_SIZE = 0x00000010;
 	
-			public static IEnumerable<object> ParseRegion(Region region, Graphics g, out RectangleF bounds)
+			public static IList<object> ParseRegion(Region region, Graphics g, out RectangleF bounds)
 			{
 				var result = new List<object>();
 				var data = region.GetRegionData().Data;
