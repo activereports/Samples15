@@ -63,7 +63,7 @@
       <HintPath>..\packages\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.2.0.0\lib\net462\GrapeCity.ActiveReports.Core.Document.Drawing.Gc.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.DataVisualization.Chart, Culture=neutral, PublicKeyToken=8dbeb54e07a9de91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.4.7\lib\net462\GrapeCity.DataVisualization.Chart.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.DataVisualization.Chart.0.4.7\lib\net462\GrapeCity.DataVisualization.Chart.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
