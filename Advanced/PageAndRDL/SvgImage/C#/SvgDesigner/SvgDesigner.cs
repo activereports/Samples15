@@ -10,6 +10,7 @@ using GrapeCity.ActiveReports.Design.DdrDesigner.Behavior;
 using GrapeCity.ActiveReports.Design.DdrDesigner.Designers;
 using GrapeCity.ActiveReports.PageReportModel;
 using System.Runtime.InteropServices;
+using System.Windows.Forms.Design;
 using System.Xml;
 using GrapeCity.ActiveReports.Drawing.Gdi;
 using Svg;
@@ -29,6 +30,11 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				new DescriptionAttribute(Properties.Resources.SvgDescription), new DisplayNameAttribute(Properties.Resources.SvgDisplayName),
 				new EditorAttribute(typeof(MultilineStringEditor), typeof(UITypeEditor))
 			);
+			AddProperty(this, x => x.SvgPath,
+				CategoryAttribute.Data, new DescriptionAttribute(Properties.Resources.SvgFileDescription),
+				new DisplayNameAttribute(Properties.Resources.SvgFileDisplayName),
+				new EditorAttribute(typeof(SvgFileNameEditor), typeof(UITypeEditor))
+				);
 		}
 
 		protected override void Dispose(bool disposing)
@@ -75,7 +81,41 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				if (customProperty != null)
 					ReportItem.CustomProperties.Remove(customProperty);
 				customProperty = new CustomPropertyDefinition("Svg", value);
+
+				var svgPathProperty = ReportItem.CustomProperties["SvgPath"];
+				if (svgPathProperty != null)
+				{
+					ReportItem.CustomProperties.Remove(svgPathProperty);
+				}
+
 				ReportItem.CustomProperties.Add(customProperty);
+			}
+		}
+
+		public string SvgPath
+		{
+			get
+			{
+				var svgPathProperty = ReportItem.CustomProperties["SvgPath"];
+				if (svgPathProperty != null)
+				{
+					var svgPathPropertyValue = svgPathProperty.Value;
+					if (svgPathPropertyValue.IsConstant)
+						return svgPathPropertyValue.ToString();
+				}
+				return string.Empty;
+			}
+			set
+			{
+				if (File.Exists(value))
+				{
+					Svg = File.ReadAllText(value);
+					var svgPathProperty = ReportItem.CustomProperties["SvgPath"];
+					if (svgPathProperty != null)
+						ReportItem.CustomProperties.Remove(svgPathProperty);
+					svgPathProperty = new CustomPropertyDefinition("SvgPath", value);
+					ReportItem.CustomProperties.Add(svgPathProperty);
+				}
 			}
 		}
 
@@ -119,6 +159,16 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 		public override Glyph ControlGlyph
 		{
 			get { return _controlGlyph ?? (_controlGlyph = new SvgControlGlyph(ReportItem, this)); }
+		}
+		
+		private sealed class SvgFileNameEditor : FileNameEditor
+		{
+			protected override void InitializeDialog(OpenFileDialog openFileDialog)
+			{
+				base.InitializeDialog(openFileDialog);
+				openFileDialog.Multiselect = false;
+				openFileDialog.Filter = Properties.Resources.SvgFileFilter;
+			}
 		}
 
 		private sealed class SvgControlGlyph : ControlBodyGlyph

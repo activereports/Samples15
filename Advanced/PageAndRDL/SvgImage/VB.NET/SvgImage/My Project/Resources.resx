@@ -120,4 +120,11 @@
   <data name="ExceptionMessage" xml:space="preserve">
     <value>Bad structure of svg image</value>
   </data>
+  <data name="InvalidSVGImage" xml:space="preserve">
+    <value>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300"&gt;
+	&lt;title&gt;Svg Image Error&lt;/title&gt;
+	&lt;text x="0" y="2em" style="font-size: 2em; textLength: 60%;"&gt;Bad structure of SVG image
+	&lt;/text&gt;
+&lt;/svg&gt;</value>
+  </data>
 </root>

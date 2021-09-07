@@ -5,8 +5,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms.Design;
 using GrapeCity.ActiveReports.Rendering;
 using GrapeCity.ActiveReports.Drawing.Gdi;
 using GrapeCity.ActiveReports.PageReportModel;
@@ -42,6 +43,11 @@ namespace GrapeCity.ActiveReports.Samples.Rtf
 				new DescriptionAttribute(Properties.Resources.PropertyRtfDescription),
 				new EditorAttribute(typeof(ExpressionInfoUITypeEditor), typeof(UITypeEditor))
 			);
+			
+			AddProperty(this, x => x.RtfPath,
+				CategoryAttribute.Data,
+				new DisplayNameAttribute(Properties.Resources.PropertyRtfFile),
+				new DescriptionAttribute(Properties.Resources.PropertyRtfFileDescription), new EditorAttribute(typeof(RtfFileNameEditor), typeof(UITypeEditor)));
 			
 			AddProperty(this, x => x.CanGrow,
 				CategoryAttribute.Layout,
@@ -137,6 +143,12 @@ namespace GrapeCity.ActiveReports.Samples.Rtf
 			
 			prop.SetValue(Component, ExpressionInfo.FromString(result));
 			ReportItem.CustomProperties[RTF_FIELD_NAME].Value = result;
+
+			var rtfPathProperty = ReportItem.CustomProperties["RtfPath"];
+			if (rtfPathProperty != null)
+			{
+				ReportItem.CustomProperties.Remove(rtfPathProperty);
+			}
 		}
 		
 		[DefaultValue(false)]
@@ -151,6 +163,34 @@ namespace GrapeCity.ActiveReports.Samples.Rtf
 		{
 			get { return ReportItem.GetCustomPropertyAsBoolean(CAN_SHRINK_FIELD_NAME, false); }
 			set { ReportItem.SetCustomProperty(CAN_SHRINK_FIELD_NAME, value.ToString()); }
+		}
+
+		public string RtfPath
+		{
+			get
+			{
+				var rtfPathProperty = ReportItem.CustomProperties["RtfPath"];
+				if (rtfPathProperty != null)
+				{
+					var rtfPathPropertyValue = rtfPathProperty.Value;
+					if(rtfPathPropertyValue.IsConstant)
+						return rtfPathPropertyValue.ToString();
+				}
+
+				return string.Empty;
+			}
+			set
+			{
+				if (File.Exists(value))
+				{
+					SetRtf(File.ReadAllText(value));
+					var rtfPathProperty = ReportItem.CustomProperties["RtfPath"];
+					if (rtfPathProperty != null)
+						ReportItem.CustomProperties.Remove(rtfPathProperty);
+					rtfPathProperty = new CustomPropertyDefinition("RtfPath", value);
+					ReportItem.CustomProperties.Add(rtfPathProperty);
+				}
+			}
 		}
 		
 		#endregion
@@ -186,6 +226,16 @@ namespace GrapeCity.ActiveReports.Samples.Rtf
 			_metafile = null;
 		}
 
+		private sealed class RtfFileNameEditor : FileNameEditor
+		{
+			protected override void InitializeDialog(OpenFileDialog openFileDialog)
+			{
+				base.InitializeDialog(openFileDialog);
+				openFileDialog.Multiselect = false;
+				openFileDialog.Filter = Properties.Resources.PropertyRtfFileFilter;
+			}
+		}
+		
 		private sealed class RtfControlGlyph : ControlBodyGlyph
 		{
 			private readonly ReportItem _reportItem;

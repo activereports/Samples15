@@ -123,4 +123,13 @@
   <data name="SvgDisplayName" xml:space="preserve">
     <value>SVG Image</value>
   </data>
+  <data name="SvgFileDescription" xml:space="preserve">
+    <value>SVG file path</value>
+  </data>
+  <data name="SvgFileDisplayName" xml:space="preserve">
+    <value>SVG File</value>
+  </data>
+  <data name="SvgFileFilter" xml:space="preserve">
+    <value>SVG|*.svg</value>
+  </data>
 </root>

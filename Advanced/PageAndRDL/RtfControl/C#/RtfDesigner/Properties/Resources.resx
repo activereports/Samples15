@@ -135,4 +135,13 @@
   <data name="PropertyCanShrinkDescription" xml:space="preserve">
     <value>Select whether the RtfControl size can decrease to accommodate the contents.</value>
   </data>
+  <data name="PropertyRtfFile" xml:space="preserve">
+    <value>RTF File</value>
+  </data>
+  <data name="PropertyRtfFileDescription" xml:space="preserve">
+    <value>RTF file path</value>
+  </data>
+  <data name="PropertyRtfFileFilter" xml:space="preserve">
+    <value>Rich Text Format|*.rtf</value>
+  </data>
 </root>

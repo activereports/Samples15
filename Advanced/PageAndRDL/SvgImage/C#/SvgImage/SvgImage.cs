@@ -29,18 +29,23 @@ namespace GrapeCity.ActiveReports.Samples.Svg
 				string svg = Convert.ToString(reportItem._properties.GetValue("Svg")).Trim();
 
 				var doc = new XmlDocument();
+				SvgDocument svgDocument = null;
 				try
 				{
 					doc.LoadXml(svg);
+					svgDocument = SvgDocument.Open(doc);
 				}
 				catch (XmlException)
 				{
-					throw new Exception(Properties.Resources.ExceptionMessage);
+					doc.LoadXml(Properties.Resources.InvalidSVGImage);
+					svgDocument = SvgDocument.Open(doc);
 				}
-
-				var svgDocument = SvgDocument.Open(doc);
-				using (var renderer = new SvgRenderer(context, new RectangleF(area.Left, area.Top, area.Width, area.Height)))
-					svgDocument.Draw(renderer);
+				finally
+				{
+					using (var renderer = new SvgRenderer(context,
+						new RectangleF(area.Left, area.Top, area.Width, area.Height)))
+						svgDocument?.Draw(renderer);
+				}
 			}
 		}
 

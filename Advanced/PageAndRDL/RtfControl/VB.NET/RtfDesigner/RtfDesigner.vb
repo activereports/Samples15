@@ -3,7 +3,10 @@ Imports System.Drawing.Design
 Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.ComponentModel.Design
+Imports System.IO
+Imports System.Net
 Imports System.Runtime.InteropServices
+Imports System.Windows.Forms.Design
 
 Imports GrapeCity.ActiveReports.Rendering
 Imports GrapeCity.ActiveReports.Drawing.Gdi
@@ -42,6 +45,12 @@ Public NotInheritable Class RtfDesigner
 					New DisplayNameAttribute(My.Resources.PropertyRtf),
 					New DescriptionAttribute(My.Resources.PropertyRtfDescription),
 					New EditorAttribute(GetType(ExpressionInfoUITypeEditor), GetType(UITypeEditor)))
+		
+		AddProperty(Me, Function(x) x.RtfPath,
+		            CategoryAttribute.Data,
+		            New DisplayNameAttribute(My.Resources.PropertyRtfFile),
+		            New DescriptionAttribute(My.Resources.PropertyRtfFileDescription),
+		            New EditorAttribute(GetType(RtfFileNameEditor), GetType(UITypeEditor)))
 
 		AddProperty(Me, Function(x) x.CanGrow,
 					CategoryAttribute.Layout,
@@ -117,7 +126,37 @@ Public NotInheritable Class RtfDesigner
 		
 		prop.SetValue(Component, ExpressionInfo.FromString(result))
 		ReportItem.CustomProperties(RTF_FIELD_NAME).Value = result
+		
+		Dim rtfPathProperty = ReportItem.CustomProperties("RtfPath")
+		If rtfPathProperty IsNot Nothing Then
+			ReportItem.CustomProperties.Remove(rtfPathProperty)
+		End If
 	End Sub
+	
+	Public Property RtfPath As String
+		Get 
+			Dim rtfPathProperty = ReportItem.CustomProperties("RtfPath")
+			If rtfPathProperty IsNot Nothing Then
+				Dim rtfPathPropertyValue = rtfPathProperty.Value
+				If rtfPathPropertyValue.IsConstant
+					Return rtfPathPropertyValue.ToString()
+				End If
+			End If
+			Return string.Empty
+		End Get
+		Set
+			If File.Exists(value) Then 
+				SetRtf(File.ReadAllText(value))
+				Dim rtfPathProperty = ReportItem.CustomProperties("RtfPath")
+				If rtfPathProperty IsNot Nothing Then
+					ReportItem.CustomProperties.Remove(rtfPathProperty)
+				End If
+				rtfPathProperty = New CustomPropertyDefinition("RtfPath", value)
+				ReportItem.CustomProperties.Add(rtfPathProperty)
+			End If
+		End Set
+	End Property
+
 	
 	<DefaultValue(False)>
 	Public Property CanGrow As Boolean
@@ -188,6 +227,15 @@ Public NotInheritable Class RtfDesigner
 		customProp = New CustomPropertyDefinition(propertyName, defaultValue)
 		ReportItem.CustomProperties.Add(customProp)
 	End Sub
+	
+	Private NotInheritable Class RtfFileNameEditor
+		Inherits FileNameEditor
+		Protected Overrides Sub InitializeDialog(openFileDialog As OpenFileDialog)
+			MyBase.InitializeDialog(openFileDialog)
+			openFileDialog.Multiselect = False
+			openFileDialog.Filter = My.Resources.PropertyRtfFileFilter
+		End Sub
+	End Class
 
 	Private NotInheritable Class RtfControlGlyph
 		Inherits ControlBodyGlyph
