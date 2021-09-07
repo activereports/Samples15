@@ -77,5 +77,32 @@ namespace GrapeCity.ActiveReports.Samples.Svg.Properties {
                 return ResourceManager.GetString("SvgDisplayName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SVG file path.
+        /// </summary>
+        internal static string SvgFileDescription {
+            get {
+                return ResourceManager.GetString("SvgFileDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SVG File.
+        /// </summary>
+        internal static string SvgFileDisplayName {
+            get {
+                return ResourceManager.GetString("SvgFileDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SVG|*.svg.
+        /// </summary>
+        internal static string SvgFileFilter {
+            get {
+                return ResourceManager.GetString("SvgFileFilter", resourceCulture);
+            }
+        }
     }
 }

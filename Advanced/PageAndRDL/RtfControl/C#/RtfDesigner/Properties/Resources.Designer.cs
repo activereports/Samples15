@@ -113,5 +113,32 @@ namespace GrapeCity.ActiveReports.Samples.Rtf.Properties {
                 return ResourceManager.GetString("PropertyRtfDescription", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RTF File.
+        /// </summary>
+        internal static string PropertyRtfFile {
+            get {
+                return ResourceManager.GetString("PropertyRtfFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RTF file path.
+        /// </summary>
+        internal static string PropertyRtfFileDescription {
+            get {
+                return ResourceManager.GetString("PropertyRtfFileDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rich Text Format|*.rtf.
+        /// </summary>
+        internal static string PropertyRtfFileFilter {
+            get {
+                return ResourceManager.GetString("PropertyRtfFileFilter", resourceCulture);
+            }
+        }
     }
 }

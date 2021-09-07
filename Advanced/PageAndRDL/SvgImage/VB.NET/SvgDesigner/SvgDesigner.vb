@@ -9,6 +9,8 @@ Imports System.Drawing
 Imports System.ComponentModel.Design
 Imports System.ComponentModel
 Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Windows.Forms.Design
 Imports GrapeCity.ActiveReports.Drawing.Gdi
 Imports Svg
 
@@ -23,6 +25,7 @@ Public NotInheritable Class SvgDesigner
 	Private _designerVerbCollection As DesignerVerbCollection
 	Public Sub New()
 		AddProperty(Me, Function(x) x.Svg, CategoryAttribute.Data, New DescriptionAttribute(My.Resources.SvgDescription), New DisplayNameAttribute(My.Resources.SvgDisplayName), New EditorAttribute(GetType(MultilineStringEditor), GetType(UITypeEditor)))
+		AddProperty(Me, Function(x) x.SvgPath, CategoryAttribute.Data, New DescriptionAttribute(My.Resources.SvgFileDescription), New DisplayNameAttribute(My.Resources.SvgFileDisplayName), New EditorAttribute(GetType(SvgFileNameEditor), GetType(UITypeEditor)))
 	End Sub
 
 	Protected Overrides Sub Dispose(disposing As Boolean)
@@ -68,9 +71,40 @@ Public NotInheritable Class SvgDesigner
 				ReportItem.CustomProperties.Remove(customProperty)
 			End If
 			customProperty = New CustomPropertyDefinition("Svg", Value)
+			
+			Dim svgPathProperty = ReportItem.CustomProperties("SvgPath")
+			If svgPathProperty IsNot Nothing Then
+				ReportItem.CustomProperties.Remove(svgPathProperty)
+			End If
+			
 			ReportItem.CustomProperties.Add(customProperty)
 		End Set
 	End Property
+	
+	Public Property SvgPath() As String
+		Get 
+			Dim svgPathProperty = ReportItem.CustomProperties("SvgPath")
+			If svgPathProperty IsNot Nothing Then
+				Dim svgPathPropertyValue = svgPathProperty.Value
+				If svgPathPropertyValue.IsConstant Then
+					Return svgPathPropertyValue.ToString()
+				End If
+			End If
+			Return string.Empty
+		End Get
+		Set
+			If File.Exists(value) Then
+				Svg = File.ReadAllText(value)
+				Dim svgPathProperty = ReportItem.CustomProperties("SvgPath")
+				If svgPathProperty IsNot Nothing Then
+					ReportItem.CustomProperties.Remove(svgPathProperty)
+				End If
+				svgPathProperty = New CustomPropertyDefinition("SvgPath", value)
+				ReportItem.CustomProperties.Add(svgPathProperty)
+			End If
+		End Set
+	End Property
+
 
 #End Region
 
@@ -119,6 +153,15 @@ Public NotInheritable Class SvgDesigner
 		End Get
 	End Property
 
+	Private NotInheritable Class SvgFileNameEditor
+		Inherits FileNameEditor
+		Protected Overrides Sub InitializeDialog(openFileDialog As OpenFileDialog)
+			MyBase.InitializeDialog(openFileDialog)
+			openFileDialog.Multiselect = False
+			openFileDialog.Filter = My.Resources.SvgFileFilter
+		End Sub
+	End Class
+	
 	Private NotInheritable Class SvgControlGlyph
 		Inherits ControlBodyGlyph
 		Public Sub New(reportItem As ReportItem, designer As SvgDesigner)

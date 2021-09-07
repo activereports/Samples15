@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ActiveReportsLayout Version="3.3" PrintWidth="9375" MaxPages="100" DocumentName="ActiveReports Document" ScriptLang="VB.NET" MasterReport="0">
   <StyleSheet>
     <Style Name="Normal" Value="font-family: Arial; font-style: normal; text-decoration: none; font-weight: normal; font-size: 10pt; color: Black; ddo-char-set: 186" />
@@ -60,7 +60,7 @@
   <CalculatedFields>
     <Field Name="BillingAddress" Formula="Customers.CompanyName + &quot;&#xA;&quot; + Address + &quot;&#xA;&quot; + City + &quot;, &quot; + Region + &quot;  &quot; + PostalCode" FieldType="None" />
     <Field Name="ShippingAddress" Formula="ShipName + &quot;&#xA;&quot; + ShipAddress + &quot;&#xA;&quot; + ShipCity + &quot;, &quot; + ShipRegion + &quot;  &quot; + ShipPostalCode" FieldType="None" />
-    <Field Name="Total" Formula="Quantity * UnitPrice" FieldType="None" />
+    <Field Name="Total" Formula="(double)Quantity * (double)UnitPrice" FieldType="None" />
   </CalculatedFields>
   <Script><![CDATA[Imports System
 Imports System.Drawing

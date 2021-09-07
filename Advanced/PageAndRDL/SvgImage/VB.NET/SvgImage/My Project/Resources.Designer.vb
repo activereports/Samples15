@@ -68,5 +68,18 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ExceptionMessage", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 300&quot; width=&quot;1000&quot; height=&quot;300&quot;&gt;
+        '''	&lt;title&gt;Svg Image Error&lt;/title&gt;
+        '''	&lt;text x=&quot;0&quot; y=&quot;2em&quot; style=&quot;font-size: 2em; textLength: 60%;&quot;&gt;Bad structure of SVG image
+        '''	&lt;/text&gt;
+        '''&lt;/svg&gt;.
+        '''</summary>
+        Friend ReadOnly Property InvalidSVGImage() As String
+            Get
+                Return ResourceManager.GetString("InvalidSVGImage", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

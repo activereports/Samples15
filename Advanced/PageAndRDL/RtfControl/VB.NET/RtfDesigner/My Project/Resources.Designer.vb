@@ -113,5 +113,32 @@ Namespace My.Resources
                 Return ResourceManager.GetString("PropertyRtfDescription", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RTF File.
+        '''</summary>
+        Friend ReadOnly Property PropertyRtfFile() As String
+            Get
+                Return ResourceManager.GetString("PropertyRtfFile", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RTF file path.
+        '''</summary>
+        Friend ReadOnly Property PropertyRtfFileDescription() As String
+            Get
+                Return ResourceManager.GetString("PropertyRtfFileDescription", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Rich Text Format|*.rtf.
+        '''</summary>
+        Friend ReadOnly Property PropertyRtfFileFilter() As String
+            Get
+                Return ResourceManager.GetString("PropertyRtfFileFilter", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

@@ -21,16 +21,18 @@ Public NotInheritable Class SvgImage
 			Dim svg As String = Convert.ToString(reportItem._properties.GetValue("Svg")).Trim()
 
 			Dim doc As New XmlDocument()
+			Dim svgDocument As SvgDocument
 			Try
 				doc.LoadXml(svg)
+				svgDocument = SvgDocument.Open(doc)
 			Catch ex As XmlException
-				Throw New Exception(My.Resources.ExceptionMessage)
+				doc.LoadXml(My.Resources.InvalidSVGImage)
+				svgDocument = SvgDocument.Open(doc)
+			Finally
+				Using renderer As New SvgRenderer(context, New RectangleF(area.Left, area.Top, area.Width, area.Height))
+					svgDocument?.Draw(renderer)
+				End Using
 			End Try
-			Dim svgDocument As SvgDocument = SvgDocument.Open(doc)
-
-			Using renderer As New SvgRenderer(context, New RectangleF(area.Left, area.Top, area.Width, area.Height))
-				svgDocument.Draw(renderer)
-			End Using
 		End Sub
 	End Class
 

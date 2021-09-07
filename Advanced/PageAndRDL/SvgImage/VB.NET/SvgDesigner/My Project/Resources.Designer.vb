@@ -77,5 +77,32 @@ Namespace My.Resources
                 Return ResourceManager.GetString("SvgDisplayName", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to SVG file path.
+        '''</summary>
+        Friend ReadOnly Property SvgFileDescription() As String
+            Get
+                Return ResourceManager.GetString("SvgFileDescription", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to SVG File.
+        '''</summary>
+        Friend ReadOnly Property SvgFileDisplayName() As String
+            Get
+                Return ResourceManager.GetString("SvgFileDisplayName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to SVG|*.svg.
+        '''</summary>
+        Friend ReadOnly Property SvgFileFilter() As String
+            Get
+                Return ResourceManager.GetString("SvgFileFilter", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

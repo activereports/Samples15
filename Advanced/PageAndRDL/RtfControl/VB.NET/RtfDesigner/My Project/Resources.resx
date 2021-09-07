@@ -135,4 +135,13 @@
   <data name="PropertyRtfDescription" xml:space="preserve">
     <value>RTF content editor.</value>
   </data>
+  <data name="PropertyRtfFile" xml:space="preserve">
+    <value>RTF File</value>
+  </data>
+  <data name="PropertyRtfFileDescription" xml:space="preserve">
+    <value>RTF file path</value>
+  </data>
+  <data name="PropertyRtfFileFilter" xml:space="preserve">
+    <value>Rich Text Format|*.rtf</value>
+  </data>
 </root>
