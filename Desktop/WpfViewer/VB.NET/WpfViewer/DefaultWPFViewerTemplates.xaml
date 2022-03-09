@@ -895,7 +895,7 @@
     </Setter>
   </Style>
   <!-- Zoom combobox template -->
-  <Style TargetType="View:ZoomComboBox">
+  <Style TargetType="View:ZoomComboBox" x:Name="ZoomComboBox">
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="View:ZoomComboBox">
