@@ -52,13 +52,13 @@
       <HintPath>..\packages\Gcef.Data.VBFunctionLib.3.0.2\lib\net40\Gcef.Data.VBFunctionLib.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.DataProviders, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.5\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.DataProviders.2.0.7\lib\net462\GrapeCity.ActiveReports.Core.DataProviders.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rdl, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.3.0\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rdl.2.3.9\lib\net462\GrapeCity.ActiveReports.Core.Rdl.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Core.Rendering, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
-      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.3.0\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
+      <HintPath>..\packages\GrapeCity.ActiveReports.Core.Rendering.2.3.9\lib\net462\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="GrapeCity.DataVisualization.Chart, Culture=neutral, PublicKeyToken=8dbeb54e07a9de91, processorArchitecture=MSIL">
       <HintPath>..\packages\Grapecity.DataVisualization.Chart.0.4.23\lib\net462\GrapeCity.DataVisualization.Chart.dll</HintPath>
